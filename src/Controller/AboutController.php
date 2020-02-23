@@ -1,18 +1,18 @@
 <?php
-    //src/Controller/HomeController
+    //src/Controller/AboutController
     namespace App\Controller;
 
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-    class HomeController extends AbstractController {
+    class AboutController extends AbstractController {
 
         /**
-            * @Route ("/home", name="home")
+            * @Route ("/about", name="about")
         */
-        public function home() {
-            
-            return $this->render('pages/index.html.twig');
+        public function about()
+        {
+            return $this->render('pages/about.html.twig');
         }
     }
