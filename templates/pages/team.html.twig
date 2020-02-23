@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teams{% endblock %}
+
+{% block main %}
+    <h1>Display Teams</h1>
+    <ul>
+        {% for team in teams %}
+        <li>{{team.teamName}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
