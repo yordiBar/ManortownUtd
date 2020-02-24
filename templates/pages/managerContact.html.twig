@@ -3,17 +3,21 @@
 {% block title %}Teams{% endblock %}
 
 {% block main %}
-    <h2>Display Teams</h2>
+    <h2>Manager Contacts</h2>
     <table class="table">
         <thead>
             <tr>
                 <th>Team</th>
+                <th>Manager</th>
+                <th>Contact Number</th>
             </tr>
         </thead>
         <tbody>
             {% for team in teams %}
             <tr>
             <td>{{team.teamName}}</td>
+            <td>{{team.contactName}}</td>
+            <td>{{team.contactNumber}}</td>
             </tr>
         {% endfor %}
 

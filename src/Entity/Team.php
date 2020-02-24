@@ -38,20 +38,35 @@ class Team
     }
 
 
-    // /**
-    //  * @ORM\Column(type="text", length=100)
-    //  */
-    // private $playerName;
+    /**
+     * @ORM\Column(type="text", length=100)
+     */
+    private $contact_Name;
 
-    // public function getPlayerName()
-    // {
-    //     return $this->playerName;
-    // }
+    public function getContactName()
+    {
+        return $this->contact_Name;
+    }
 
-    // public function setPlayerName($playerName)
-    // {
-    //     $this->playerName = $playerName;
-    // }
+    public function setContactName($contact_Name)
+    {
+        $this->contact_Name = $contact_Name;
+    }
+
+    /**
+     * @ORM\Column(type="text", length=100)
+     */
+    private $contact_Number;
+
+    public function getContactNumber()
+    {
+        return $this->contact_Number;
+    }
+
+    public function setContactNumber($contact_Number)
+    {
+        $this->contact_Number = $contact_Number;
+    }
 
 
     /**
