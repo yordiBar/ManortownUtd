@@ -1,24 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Teams{% endblock %}
+{% block title %}Manager Contacts{% endblock %}
 
 {% block main %}
     <h2>Manager Contacts</h2>
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
-                <th>Team</th>
-                <th>Manager</th>
-                <th>Contact Number</th>
+                <th scope="col">Team</th>
+                <th scope="col">Manager</th>
+                <th scope="col">Contact Number</th>
             </tr>
         </thead>
         <tbody>
             {% for team in teams %}
-            <tr>
-            <td>{{team.teamName}}</td>
-            <td>{{team.contactName}}</td>
-            <td>{{team.contactNumber}}</td>
+            <tr class="table-secondary">
+                <td>{{team.teamName}}</td>
+                <td>{{team.contactName}}</td>
+                <td>{{team.contactNumber}}</td>
             </tr>
         {% endfor %}
 
+{% endblock %}
+{% block javascripts %}
 {% endblock %}

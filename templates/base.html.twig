@@ -6,7 +6,9 @@
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
-		<link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css"> {% block stylesheets %}{% endblock %}
+		{% block stylesheets %}
+		<link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">		
+		{% endblock %}
 		</head>
 		<body>
 			<header>
@@ -27,24 +29,6 @@
 							<li class="nav-item">
 								<a class="nav-link" href="team">Teams</a>
 							</li>
-							{# <li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Teams</a>
-								<div class="dropdown-menu" style="">
-									<a class="dropdown-item" href="#">Academy</a>
-									<a class="dropdown-item" href="#">Under 8s</a>
-									<a class="dropdown-item" href="#">Under 9s</a>
-									<a class="dropdown-item" href="#">Under 10s</a>
-									<a class="dropdown-item" href="#">Under 11s</a>
-									<a class="dropdown-item" href="#">Under 12s</a>
-									<a class="dropdown-item" href="#">Under 13s</a>
-									<a class="dropdown-item" href="#">Under 14s</a>
-									<a class="dropdown-item" href="#">Under 15s</a>
-									<a class="dropdown-item" href="#">Under 16s</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Special Needs Football</a>
-									<a class="dropdown-item" href="#">Senior Football</a>
-								</div>
-							</li> #}
 							<li class="nav-item">
 								<a class="nav-link" href="events">Events</a>
 							</li>
@@ -82,6 +66,7 @@
 				<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 				<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 			{% endblock %}
 		</body>
 	</html>
