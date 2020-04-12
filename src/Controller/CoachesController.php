@@ -15,7 +15,8 @@
         public function listAction()
         {
             $teams = $this->getDoctrine()->getRepository('App:Team')->findAll();
-            
-            return $this->render('pages/managerContact.html.twig', ['teams' => $teams]);
+
+            return $this->render('pages/managerContact.html.twig',
+            ['teams' => $teams]);
         }
     }
