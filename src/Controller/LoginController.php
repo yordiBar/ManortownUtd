@@ -1,5 +1,5 @@
 <?php
-    //src/Controller/GalleryController
+    //src/Controller/LoginController
     namespace App\Controller;
 
     use Symfony\Component\HttpFoundation\Request;
@@ -19,5 +19,13 @@ class LoginController extends AbstractController {
 
             return $this->render('pages/login.html.twig',
             ['error' => $error, 'lastUsername' => $lastUsername]);
+        }
+
+        /**
+            * @Route ("/logout", name="logout")
+        */
+        public function logout()
+        {
+
         }
     }

@@ -1,5 +1,5 @@
 <?php
-    //src/Controller/GalleryController
+    //src/Controller/RegisterController
     namespace App\Controller;
 
     use Symfony\Component\HttpFoundation\Response;
