@@ -34,6 +34,18 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-      - {path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/admin, roles: ROLE_ADMIN }
+      - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/home, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/team, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/about, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/coach, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/comm, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/comp, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/contact, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/events, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/findUs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/gallery, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/playerReg, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/shop, roles: IS_AUTHENTICATED_FULLY }
+      # - { path: ^/, roles: ROLE_ADMIN }
