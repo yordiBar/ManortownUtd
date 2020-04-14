@@ -10,10 +10,10 @@
 
 
         /**
-            * @Route ("/clock", name="clock")
+            * @Route ("/api", name="api")
         */
-        public function updateClock()
+        public function weatherAPI()
         {
-
+          return $this->render('api/weather.html.twig');
         }
     }

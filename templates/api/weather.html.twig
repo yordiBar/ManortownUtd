@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Current Weather{% endblock %}
+
+{% block main %}
+<div class="container">
+  <link rel="stylesheet" href="css/api.css" type="text/css">
+  <!-- Weather API -->
+  <div class='main'>
+    <!-- <div class='wicon'></div> -->
+    <h1>Current weather</h1>
+    <p class="country"></p>
+    <p onclick='fc()' class="tempeture"></p>
+    <p class="condition"></p>
+    <p class="ex">(Click on tempeture to change between Fahrenheit and Celsius)</p>
+  </div>
+</div>
+<!-- Weather API End -->
+{% endblock %}
