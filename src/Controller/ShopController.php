@@ -12,8 +12,9 @@ class ShopController extends AbstractController
      */
     public function index()
     {
-        return $this->render('shop/index.html.twig', [
-            'controller_name' => 'ShopController',
-        ]);
+        $products = $this->getDoctrine()->getRepository('App:Products')->findAll();
+
+        return $this->render('shop/index.html.twig',
+        ['products' => $products]);
     }
 }

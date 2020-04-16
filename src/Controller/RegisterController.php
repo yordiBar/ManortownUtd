@@ -13,6 +13,8 @@
         */
         public function register()
         {
-            return $this->render('pages/register.html.twig');
+            return $this->render('pages/register.html.twig', [
+                'controller_name' => 'RegisterController',
+            ]);
         }
     }

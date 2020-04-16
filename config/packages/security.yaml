@@ -47,5 +47,5 @@ security:
       - { path: ^/gallery, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/playerReg, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/shop, roles: IS_AUTHENTICATED_FULLY }
+      - { path: ^/shop, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       # - { path: ^/, roles: ROLE_ADMIN }

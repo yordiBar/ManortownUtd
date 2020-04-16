@@ -32,6 +32,24 @@ class User implements UserInterface, \Serializable
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $accType;
+
+    public function setAccType(string $acctype): self
+    {
+        $this->accType = $acctype;
+
+        return $this;
+    }
+
+
+    public function getAccType(): ?string
+    {
+        return $this->accType;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -8,18 +8,68 @@
 </style>
 
 <br />
-<div class="container" align="center">
-    <h2>Login Page</h2>
-    {% if errors is defined %}
-        <span class="error">{{ error.message }}</span>
-      {% endif %}
-    <form action="{{ path('login') }}" method="post" accept-charset="UTF-8">
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+<div class="example-wrapper">
 
-      <input type="text" name="_username" value="{{ lastUsername }}" placeholder="Username">
+Username: <input type="text" id="un"/> <br>
+Password: <input type="text" id="pw"/><br>
 
-      <input type="password" name="_password" placeholder="Password">
+        <script>
+        function postData(){
 
-      <button type="submit">Login</botton>
-    </form>
-  </div>
+        // getting the values from the fields
+        var username = $('#un').val();
+        var password = $('#pw').val();
+
+        // validation
+        if(username == ""){
+           alert("please enter a username");
+        } else {
+
+
+            console.log(username);
+            console.log(password);
+
+            $.post( "/catchTheData", { type: "insertnewuser", un: username, pw: password})
+                  .done(function( data ) {
+                    alert( "Data Loaded: " + data );
+                  });
+
+          }
+        }
+
+       function check(){
+
+        // getting the values from the fields
+        var username = $('#un').val();
+        var password = $('#pw').val();
+
+         // passing it to the catchTheData page for verification
+        $.post( "/catchTheData", { type: "checkacctype", un: username, pw:password})
+              .done(function( data ) {
+                alert( "Data Loaded: " + data );
+                 // based on the user acc type
+                 // send the user to that dash board
+                if(data == 'customer'){
+                   window.location="/shop"
+                }
+                else if(data == 'manager')
+                {
+                    window.location=""
+                }
+
+              });
+       }
+        </script>
+
+        <button onclick="postData()">Register - Post data!</button>
+
+
+
+        <button onclick="check()">Check if user exists - Login</button>
+</div>
+
 {% endblock %}

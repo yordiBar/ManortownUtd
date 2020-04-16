@@ -3,8 +3,50 @@
 {% block title %}Register{% endblock %}
 
 {% block main %}
-<br />
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
 <div class="container" align="center">
-    <h2>Register page</h2>
-  </div>
+<br />
+  <h2>Register</h2>
+  <br />
+  <form>
+    Username: <input type="text" id="un"/>
+    Email: <input type="text" id="em"/>
+    Password: <input type="text" id="pw"/><br><br>
+    <button onclick="postData()">Register</button>
+  </form>
+</div>
+<script>
+  function postData() {
+
+    // getting the values from the fields
+    var email = $('#em').val();
+    var username = $('#un').val();
+    var password = $('#pw').val();
+
+    // validation
+    if (username == "") {
+      alert("please enter a username");
+    } else {
+
+      console.log(username);
+      console.log(email);
+      console.log(password);
+
+      $.post("/catchTheData", {
+        type: "insertnewuser",
+        un: username,
+        em: email,
+        pw: password
+      }).done(function(data) {
+        alert("Data Loaded: " + data);
+      });
+
+    }
+
+  }
+</script>
+
 {% endblock %}
