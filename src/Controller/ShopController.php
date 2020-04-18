@@ -17,4 +17,16 @@ class ShopController extends AbstractController
         return $this->render('shop/index.html.twig',
         ['products' => $products]);
     }
+
+    /**
+     * @Route("/shop", name="cart")
+     */
+    public function cart()
+    {
+        $products = $this->getDoctrine()->getRepository('App:Products')->findAll();
+
+        return $this->render('pages/cart.html.twig',
+        ['products' => $products]);
+    }
+
 }

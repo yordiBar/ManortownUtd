@@ -23,9 +23,7 @@ class CatchTheData extends AbstractController
              // catch the username
              $name = $request->request->get('un', 'this is the default word');
 
-
              $repository = $this->getDoctrine()->getRepository(User::class);
-
 
              $user = $repository->findOneBy(['username' => $name]);
              if($user){
