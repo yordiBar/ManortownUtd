@@ -3,44 +3,44 @@
 {% block title %}Find Us{% endblock %}
 
 {% block main %}
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-      /* Formatting the map div */
-      #map {
-        height: 80%;
-        margin: 1em;
-      }
-      html, body {
-        height: 100%;
-      }
-    </style>
-  </head>
-  <body>
-  <h4>We are here!</h4>
-    <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
+  <html>
+    <head>
+      <meta name="viewport" content="initial-scale=1.0">
+      <meta charset="utf-8">
+      <style>
+        /* Formatting the map div */
+        #map {
+          height: 75%;
+          margin: 1em;
+        }
+        body,
+        html {
+          height: 100%;
+        }
+      </style>
+    </head>
+    <body>
+      <h4>We are here!</h4>
+      <p>Perrystown Community Centre, Greentrees Park, Perrystown, Dublin 12</p>
+      <div id="map"></div>
+      <script>
+        var map;
+        function initMap() {
 
-        var myPlace = {lat: 53.311247, lng: -6.322468};
+          var myPlace = {
+            lat: 53.311247,
+            lng: -6.322468
+          };
 
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: myPlace,
-          zoom: 14
-        });
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: myPlace,
+            zoom: 14
+          });
 
-        var marker = new google.maps.Marker({
-          position: myPlace,
-          map: map,
-          title: 'Manortown United'
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd9vw-3cqcy9eV1Gc_DTMcxuqUdDggVDo&callback=initMap"
-    async defer></script>
-  </body>
-</html>
+          var marker = new google.maps.Marker({position: myPlace, map: map, title: 'Manortown United'});
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd9vw-3cqcy9eV1Gc_DTMcxuqUdDggVDo&callback=initMap" async="async" defer="defer"></script>
+    </body>
+  </html>
 {% endblock %}
