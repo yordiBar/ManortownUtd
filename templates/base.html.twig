@@ -8,8 +8,23 @@
     {% block stylesheets %}
       <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css"/>
       <style>
-        .clock{
-          text-align:center;
+        .clock {
+          text-align: center;
+        }
+        body {
+          background-color: #f1f1f1;
+          position: relative;
+          padding-bottom: 58px;
+          min-height: 100vh;
+        }
+        footer {
+          text-align: center;
+          color: #FFFFFF;
+          background-color: #55595c;
+          padding: 20px;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
         }
       </style>
     {% endblock %}
@@ -72,102 +87,102 @@
         </div>
       </nav>
     </header>
-    {% block main %}
+
     <main>
-			<div class="container">
-		</div>
+      {% block main %}
+        <div class="container"></div>
+      {% endblock %}
+      {% block cart %}{% endblock %}
     </main>
-    {% endblock %}
+
+
+    <!-- footer with Javascript to automate the year displayed -->
+    <footer>
+      {% block footer %}&copy; <script>document.write(new Date().getFullYear())
+      </script>, Bart Rybak - Technological University Dublin{% endblock %}
+    </footer>
+
     {% block javascripts %}
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-      <!-- Digital clock taken from -> https://codepen.io/iiSeptum/pen/cwHeL
-        and https://stackoverflow.com/questions/8264463/jquery-live-clock-with-optional-24-or-12-hours -->
+      <!-- Digital clock taken from -> https://codepen.io/iiSeptum/pen/cwHeL and https://stackoverflow.com/questions/8264463/jquery-live-clock-with-optional-24-or-12-hours -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script>
-      $(document).ready(function(){
-        setInterval('updateClock()', 1000);
+        $(document).ready(function() {
+          setInterval('updateClock()', 1000);
         });
-        function updateClock (){
-          var currentTime = new Date ( );
+        function updateClock() {
+          var currentTime = new Date();
           $('#clock').css({'color': '#14782f', 'text-shadow': '0 0 6px #c9c614'});
-          var currentHours = currentTime.getHours ( );
-          var currentMinutes = currentTime.getMinutes ( );
-          var currentSeconds = currentTime.getSeconds ( );
+          var currentHours = currentTime.getHours();
+          var currentMinutes = currentTime.getMinutes();
+          var currentSeconds = currentTime.getSeconds();
 
           // Pad the minutes and seconds with leading zeros, if required
-          currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
-          currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+          currentMinutes = (
+            currentMinutes < 10
+              ? "0"
+              : ""
+          ) + currentMinutes;
+          currentSeconds = (
+            currentSeconds < 10
+              ? "0"
+              : ""
+          ) + currentSeconds;
 
           // Choose either "AM" or "PM" as appropriate
-          var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+          var timeOfDay = (currentHours < 12)
+            ? "AM"
+            : "PM";
 
           // Convert the hours component to 12-hour format if needed
-          currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+          currentHours = (currentHours > 12)
+            ? currentHours - 12
+            : currentHours;
 
           // Convert an hours component of "0" to "12"
-          currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+          currentHours = (currentHours == 0)
+            ? 12
+            : currentHours;
 
           // Compose the string for display
           var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
-
 
           $("#clock").html(currentTimeString);
         }
       </script>
       <script>
-      // Weather API -> https://codepen.io/Vanagasa/pen/XRRWJE
+        // Weather API -> https://codepen.io/Vanagasa/pen/XRRWJE
         var temp;
         var cond;
-          $(document).ready(function position(){
-              $.getJSON ('http://ip-api.com/json', function(data){
-                var lat = data.lat;
-                var lon = data.lon;
-                var location = data.city + ', ' + data.country;
-                $('.country').html(location);
-                getWeather(lat, lon);
-              })
-            });
+        $(document).ready(function position() {
+          $.getJSON('http://ip-api.com/json', function(data) {
+            var lat = data.lat;
+            var lon = data.lon;
+            var location = data.city + ', ' + data.country;
+            $('.country').html(location);
+            getWeather(lat, lon);
+          })
+        });
         function getWeather(lat, lon) {
-          $.getJSON ("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=b2d3758d7d1b3c72dba58b807cebbe7e",
-          function (data){
-            temp=(data.main.temp*9/5-459.67).toFixed(1);
+          $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=b2d3758d7d1b3c72dba58b807cebbe7e", function(data) {
+            temp = (data.main.temp * 9 / 5 - 459.67).toFixed(1);
             $('.tempeture').html(temp + '°F');
-            cond=data.weather[0].main;
-            $('.condition').html(cond);
-            if (cond == "Clouds"){
-              $('.wicon').addClass('clouds');
-              $('.wicon').html('<i class="fa fa-cloud fa-5x" aria-hidden="true"></i>')
-            }
-            else if (cond == "Clear" ){
-              $('.wicon').addClass('clear');
-              $('.wicon').html('<i class="fa fa-sun-o fa-5x" aria-hidden="true"></i>');
-            }
-            else if (cond == "Rain"){
-              $('.wicon').addClass('rain');
-              $('.wicon').html('<i class="fa fa-tint fa-5x" aria-hidden="true"></i>');
-            }
-            else if (cond == "Snow"){
-              $('.wicon').addClass('snow');
-              $('.wicon').html('<i class="fa fa-snowflake-o fa-5x" aria-hidden="true"></i>');
-            }
           });
         }
         var tempF = true;
-        function fc(){
-          if (tempF===true){
-            $('.tempeture').html(((temp-32)/1.8).toFixed(1) + '°C');
+        function fc() {
+          if (tempF === true) {
+            $('.tempeture').html(((temp - 32) / 1.8).toFixed(1) + '°C');
             tempF = true;
-          }
-          else{
+          } else {
             $('.tempeture').html(temp + '°F');
             tempF = false;
           }
         }
       </script>
     {% endblock %}
-    {% block cart %}{% endblock %}
   </body>
 </html>
