@@ -1,5 +1,7 @@
 <?php
     //src/Controller/RegisterController
+    //unused controller
+
     namespace App\Controller;
 
     use Symfony\Component\HttpFoundation\Response;

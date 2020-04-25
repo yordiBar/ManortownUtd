@@ -1,5 +1,7 @@
 <?php
     //src/Controller/LoginController
+    // unused controller
+
     namespace App\Controller;
 
     use Symfony\Component\HttpFoundation\Request;
