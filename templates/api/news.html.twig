@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NEWS{% endblock %}
+
+{% block main %}
+
+<!-- News API -->
+<!-- Formatting including css thanks to https://codepen.io/ezefreecoder/pen/ZrXoRP -->
+<div class="container">
+<link rel="stylesheet" href="css/news.css" type="text/css">
+	<div class="header">
+		<h1>News</h1>
+	</div>
+	<div class="content">
+		<button id="getNews">
+			<span>Click to Get News</span>
+		</button>
+	</div>
+	<div class="news"></div>
+
+</div>
+
+<script>
+const newsContent = document.querySelector('.news');
+const newsButton = document.getElementById('getNews');
+
+//Store the URL of the JSON we want to retrieve in a variable
+const requestURL = 'https://newsapi.org/v2/everything?q=doughnut&sortBy=publishedAt&apiKey=84249b63d1644f0299ebb468e933065f'; //my own API key from newsapi.org
+
+// ASYNC/AWAIT
+const getNews = async () => {
+  const response = await fetch(requestURL, {method: 'get'}); // FETCH makes it easy to get data from APIs
+  const json = await response.json();
+  return json.articles;
+}
+getNews().then(newsData => {
+  let current = 0;
+  newsButton.addEventListener('click', () => { // addEventListener replaces jquery $.click()
+    if (current === 20) { current = 0; }
+    displayNew(newsData[current]);
+    current++;
+  });
+});
+
+function displayNew(newsItem) {
+  const content = `<a target="_blank" href="${newsItem.url}">
+    <article>
+      <h5>${newsItem.title}</h5>
+    </article>
+  </a>`;
+  newsContent.innerHTML = content;
+}
+</script>
+
+
+
+
+
+{# <table class="table table-stripped" id="articles">
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Content</th>
+		</tr>
+</table>
+
+
+<script>
+
+$(document).ready(function(){
+  $.getJSON("https://newsapi.org/v2/everything?q=doughnut&sortBy=publishedAt&apiKey=84249b63d1644f0299ebb468e933065f", function(data){
+    var articles = '';
+    $.each(data, function(key, value){
+      articles += '<tr>';
+      articles += '<td>'+value.title+'</td>';
+      articles += '<td>'+value.author+'</td>';
+      articles += '<td>'+value.content+'</td>';
+    });
+    $('#articles').append(articles);
+  });
+}); #}
+
+{# <div class="row">
+  <div id="title" class="col-md-5"><div>
+  <div id="author" class="col-md-3"></div>
+  <div id="content" class="col-md-9"></div>
+</div>
+  <script>
+  // The getJSON function allows us to make a call outside of our server out to somewhere else, such as an API the In this URL, you will see a value "q" is is the query we are making. In this case, we are looking at bitcon. on the far right hand side
+  // of this query we are passing the Unique API key that I have for the service, so we can tell the server who are are.
+  $(document).ready(function position() {
+  $.getJSON("https://newsapi.org/v2/everything?q=doughnut&sortBy=publishedAt&apiKey=84249b63d1644f0299ebb468e933065f", function(data) {
+    console.log(data);
+    for (var i = 0; i < data.articles.length; i++) {
+      // For each individual news story that we have, we will take one article title at a time and then append it into the #output div tag at the top of the page.
+      var singleTitle = data.articles[i].title;
+      var author = data.articles[i].author;
+      var content = data.articles[i].content;
+      $('#title').append(singleTitle + '<br>');
+      $('#author').append(author +'<br');
+      $('#content').append(content +'<br');
+    }
+  })
+  });
+</script> #}
+
+{% endblock %}

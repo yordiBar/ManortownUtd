@@ -35,22 +35,14 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $accType;
 
-    public function setAccType(string $acctype): self
-    {
-        $this->accType = $acctype;
-
-        return $this;
-    }
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
 
-    public function getAccType(): ?string
-    {
-        return $this->accType;
-    }
-
-    public function getId(): ?int
+      public function getId(): ?int
     {
         return $this->id;
     }
@@ -91,11 +83,18 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getRoles()
+    public function getRoles(): array
     {
-      return [
-        'ROLE_USER'
-      ];
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
     }
 
     public function getSalt() {}

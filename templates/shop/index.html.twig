@@ -15,8 +15,6 @@
             <th scope="col">Size</th>
             <th scope="col">Add</th>
             <th scope="col">Remove</th>
-            <th scope="col">Total Items</th>
-            <th scope="col">Total Cost</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -28,12 +26,12 @@
               <td>{{products.size}}</td>
               <td><button id="dn1plus" class="btn btn-info btn-sm">+</button></td>
               <td><button id="dn1min" class="btn btn-info btn-sm">-</button></td>
-              <td><input type="text" id="d1qty" size="2" value="0"/></td>
-              <td><input type="text" id="currentCost" value="0.00"/></td>
               <td><button type="button" class="btn btn-primary btn-sm">Add to Cart</button></td>
             </tr>
           {% endfor %}
         </tbody>
+        Total Items: <input type="text" id="d1qty" size="2" value="0"/>
+        Total Cost: <input type="text" id="currentCost" value="0.00"/>
       </table>
     {% else %}
       <p>No items to display</p>

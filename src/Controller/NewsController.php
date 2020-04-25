@@ -1,18 +1,19 @@
 <?php
-    //src/Controller/HomeController
+    //src/Controller/ApiController
     namespace App\Controller;
 
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-    class HomeController extends AbstractController {
+    class NewsController extends AbstractController {
+
 
         /**
-            * @Route ("/home", name="home")
+            * @Route ("/news", name="news")
         */
-        public function home() {
-
-            return $this->render('pages/index.html.twig');
+        public function newsAPI()
+        {
+            return $this->render('api/news.html.twig');
         }
     }

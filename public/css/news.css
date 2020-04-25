@@ -1,0 +1,123 @@
+/* html,
+body {
+    height: 100%;
+    margin: 0px;
+} */
+
+.container {
+    display: grid;
+    grid-template: 40px auto auto 40px/ repeat(12, 1fr);
+    height: 100%;
+    background-image: url(//unsplash.it/1200/901);
+    background-position: center;
+    background-size: cover;
+}
+
+.header {
+    grid-column: 1 / -1;
+    background-color: rgb(0, 0, 0);
+    color: #ffeead;
+}
+
+.header h1 {
+    margin: 0;
+    margin-left: 1em;
+}
+
+.content {
+    grid-column: 1/ -1;
+    margin-top: 3px;
+}
+
+.container>.content,
+.news {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.news {
+    grid-column: 1 / -1;
+}
+
+#getNews {
+    background-color: black;
+    color: #ffeead;
+    letter-spacing: 0.5px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 4px;
+    border: none;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+}
+
+#getNews span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+#getNews span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+#getNews:hover span {
+    padding-right: 25px;
+}
+
+#getNews:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.news a {
+    text-decoration: none;
+    font-size: 25px;
+    font-family: "Helvetica";
+    color: white;
+}
+
+@-webkit-keyframes fade {
+    0% {
+        background: #f7f0f0;
+    }
+    100% {
+        background: none;
+    }
+}
+
+@keyframes fade {
+    0% {
+        background: #f7f0f0;
+    }
+    100% {
+        background: none;
+    }
+}
+
+.news article {
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+    -webkit-animation: fade 1s ease-in 1;
+    animation: fade 1s ease-in 1;
+}
+
+.news article:hover {
+    background-color: rgb(183, 177, 209);
+}
+
+.news article a:hover {
+    color: #ffeead;
+}
