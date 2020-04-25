@@ -20,28 +20,8 @@ security:
                 - App\Security\LoginFormAuthenticator
             logout:
               path: app_logout
-              target: /
-        # main:
-        #     anonymous: true
-        #
-        #     form_login:
-        #       login_path: login
-        #       check_path: login
-        #       provider: my_provider
-        #       default_target_path: home
-        #
-        #     logout:
-        #       path: /logout
-        #       target: /home
-        #     guard:
-        #         authenticators:
-        #             - App\Security\LoginFormAuthenticator
-
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+              target: /home
+              invalidate_session: true
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
@@ -57,7 +37,7 @@ security:
       - { path: ^/events, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/findUs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/gallery, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/playerReg, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/playerReg, roles: IS_AUTHENTICATED_FULLY }
       - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/shop, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/shop, roles: IS_AUTHENTICATED_FULLY }
       # - { path: ^/, roles: ROLE_ADMIN }

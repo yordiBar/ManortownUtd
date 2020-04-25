@@ -75,10 +75,9 @@
             <li class="nav-item" style="float: right">
               <a class="nav-link" href="shop">Shop</a>
             </li>
-
             {% if app.user %}
             <li class="nav-item" style="float: right">
-              <a class="nav-link" href="{{ path('logout') }}">Logout</a>
+              <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
             {% else %}
             <li class="nav-item" style="float: right">
               <a class="nav-link" href="{{ path('registration') }}">Register</a>

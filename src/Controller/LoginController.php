@@ -25,11 +25,11 @@ class LoginController extends AbstractController {
             // ['error' => $error, 'lastUsername' => $lastUsername]);
         }
 
-        /**
-            * @Route ("/logout", name="logout")
-        */
-        public function logout()
-        {
-
-        }
+        // /**
+        //     * @Route ("/logout", name="logout")
+        // */
+        // public function logout()
+        // {
+        //
+        // }
     }
