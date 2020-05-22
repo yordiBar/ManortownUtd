@@ -9,7 +9,7 @@
 <script src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
 <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 <br/>
-  <div class="container" align="center">  
+  <div class="container" align="center">
     <h2>Orders</h2>
     {% if orders %}
       <table class="table table-hover">
@@ -33,18 +33,77 @@
     {% else %}
       <p>No items to display</p>
     {% endif %}
-    <canvas id="myChart" width="200" height="100"></canvas>
+    <canvas id="quantityChart" width="200" height="100"></canvas>
+    <br>
+    <canvas id="totalCostChart" width="200" height="100"></canvas>
 </div>
 
 <script>
-var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById('quantityChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Jersey', 'Shorts', 'Socks'],
+        datasets: [{
+            label: 'Orders',
+            data: [
+              {% for orders in orders %}
+                {{orders.quantity}},
+                {% endfor %}
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1,
+            borderColor:'#777'
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                display: false
+            }]
+        },
+        title: {
+            display:true,
+            text:'Sales by Quantity',
+            fontSize:25
+        },
+        legend: {
+            labels:{
+                fontColor:'#000'
+            }
+        }
+    }
+});
+</script>
+
+<script>
+var ctx = document.getElementById('totalCostChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Jersey', 'Shorts', 'Socks'],
         datasets: [{
             label: 'Orders',
-            data: [3, 3, 10],
+            data: [
+              {% for orders in orders %}
+                {{orders.totalcost}},
+                {% endfor %}
+            ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -75,13 +134,11 @@ var myChart = new Chart(ctx, {
         },
         title: {
             display:true,
-            text:'Total Sales to Date',
+            text:'Total Sales Values by Item (€)',
             fontSize:25
         },
         legend: {
-            labels:{
-                fontColor:'#000'
-            }            
+            display: false
         }
     }
 });
