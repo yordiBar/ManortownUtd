@@ -40,4 +40,5 @@ security:
       - { path: ^/playerReg, roles: IS_AUTHENTICATED_FULLY }
       - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/shop, roles: IS_AUTHENTICATED_FULLY }
+      - { path: ^/orders, roles: IS_AUTHENTICATED_FULLY }
       # - { path: ^/, roles: ROLE_ADMIN }

@@ -26,6 +26,11 @@ class Orders
      */
     private $totalcost;
 
+    /**
+     * @ORM\Column(type="integer", length=255)
+     */
+    private $quantity;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +56,18 @@ class Orders
     public function setTotalcost(string $totalcost): self
     {
         $this->totalcost = $totalcost;
+
+        return $this;
+    }
+
+    public function getQuantity(): ?string
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(string $quantity): self
+    {
+        $this->quantity = $quantity;
 
         return $this;
     }
