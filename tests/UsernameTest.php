@@ -3,11 +3,11 @@
 namespace App\tests;
 
 use App\Entity\User;
-use \PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class UsernameTest extends TestCase
 {
-    public function getUsernameTest()
+    public function testGetUsername()
     {
         $username = new User();
 
@@ -16,8 +16,8 @@ class UsernameTest extends TestCase
         $this->assertEquals('admin', $username->getUsername());
     }
 
-    public function testTrueAssertsToTrue()
-    {
-        $this->assertTrue(true);
-    }
+    // public function testTrueAssertsToTrue()
+    // {
+    //     $this->assertTrue(true);
+    // }
 }
